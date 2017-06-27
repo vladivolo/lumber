@@ -16,7 +16,7 @@ const (
 	ERROR
 	FATAL
 
-	TIMEFORMAT = "2006-01-02 15:04:05"
+	TIMEFORMAT = "2006-Jan-02 15:04:05.000000"
 )
 
 var (
@@ -58,6 +58,9 @@ type Message struct {
 
 // SetLogger sets a new default logger
 func SetLogger(l Logger) {
+	if stdLog != nil {
+		stdLog.Close()
+	}
 	stdLog = l
 }
 
